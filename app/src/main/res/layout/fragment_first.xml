@@ -5,17 +5,35 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#245953"
     tools:context=".FirstFragment">
 
-    <TextView
-        android:id="@+id/textView2"
+    <Button
+        android:id="@+id/linkwebButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bienvenido a "
+        android:backgroundTint="#E49393"
+        android:text="Ver link"
         android:textSize="34sp"
-        android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/bienvenidatxt"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="#E49393"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Bienvenido a la web"
+        android:inputType="text"
+        android:textColorHint="#E49393"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/linkwebButton"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:textStyle="bold" />
 </androidx.constraintlayout.widget.ConstraintLayout>

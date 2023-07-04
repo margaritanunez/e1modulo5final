@@ -3,20 +3,22 @@ package com.example.e1modulo5;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.e1modulo5.databinding.FragmentFirstBinding;
+import com.example.e1modulo5.databinding.FragmentSecondBinding;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link FirstFragment#newInstance} factory method to
+ * Use the {@link SecondFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class FirstFragment extends Fragment {
-    private FragmentFirstBinding binding;
+public class SecondFragment extends Fragment {
+    private FragmentSecondBinding binding;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,7 +29,7 @@ public class FirstFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public FirstFragment() {
+    public SecondFragment() {
         // Required empty public constructor
     }
 
@@ -37,11 +39,11 @@ public class FirstFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment FirstFragment.
+     * @return A new instance of fragment SecondFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static FirstFragment newInstance(String param1, String param2) {
-        FirstFragment fragment = new FirstFragment();
+    public static SecondFragment newInstance(String param1, String param2) {
+        SecondFragment fragment = new SecondFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -62,19 +64,21 @@ public class FirstFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentFirstBinding.inflate(getLayoutInflater(), container, false);
-        binding.linkwebButton.setOnClickListener(new View.OnClickListener() {
+        binding = FragmentSecondBinding.inflate(getLayoutInflater(), container, false);
+        binding.goBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String url = binding.bienvenidatxt.getText().toString();
-
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.mainFragmentContainerView,SecondFragment.newInstance(url,""),"").commit();
+                FragmentManager fragment = new FragmentManager() {
+                    @Override
+                    public void popBackStack() {
+                        super.popBackStack();
+                    }
+                };
 
             }
         });
+        binding.gugulWebView.loadUrl(mParam1);
 
         return binding.getRoot();
-
-
     }
 }
